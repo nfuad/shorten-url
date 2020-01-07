@@ -1,0 +1,9 @@
+type Link {
+  actualURL: String! @unique
+  alias: String! @unique
+}
+
+type Query {
+  allLinks: [Link!]!
+  findLinkByAlias(alias: String!): Link!
+}
