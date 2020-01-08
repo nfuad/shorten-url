@@ -1,3 +1,6 @@
 import * as React from 'react'
 
-export default () => <div>whatever</div>
+// custom imports
+import Layout from '../components/Layout'
+
+export default () => <Layout>whatever</Layout>
