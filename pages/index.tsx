@@ -20,7 +20,7 @@ export default () => {
       })
       .catch(error => {
         console.log(`boo :( ${error}`)
-        alert('🤷‍♀️')
+
         // setSubmitting(false)
       })
   }
