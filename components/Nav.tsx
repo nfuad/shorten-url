@@ -48,6 +48,16 @@ export default () => (
       a:hover {
         border-bottom: 5px solid var(--tertiary);
       }
+
+      @media only screen and (max-width: 1000px) {
+        ul {
+          justify-content: center;
+        }
+
+        a {
+          font-size: 1em;
+        }
+      }
     `}</style>
   </nav>
 )
