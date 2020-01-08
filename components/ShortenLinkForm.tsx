@@ -18,7 +18,7 @@ export default props => {
             },
           })}
         />
-        <button type="submit">Shorten link!</button>
+        <button type="submit">Shorten!</button>
       </form>
       <span className="error">
         <ErrorMessage errors={errors} name="longURL" />
@@ -65,6 +65,34 @@ export default props => {
           min-height: 2.2em;
           font-size: 1.2em;
           color: var(--primary);
+        }
+
+        @media only screen and (max-width: 1000px) {
+          input,
+          button {
+            font-size: 1em;
+          }
+        }
+
+        @media only screen and (max-width: 850px) {
+          form {
+            width: 60%;
+            box-shadow: -10px 10px 0px 0px var(--tertiary);
+          }
+        }
+
+        @media only screen and (max-width: 700px) {
+          form {
+            width: 70%;
+            box-shadow: -5px 5px 0px 0px var(--tertiary);
+          }
+        }
+
+        @media only screen and (max-width: 500px) {
+          form {
+            width: 75%;
+            box-shadow: -5px 5px 0px 0px var(--tertiary);
+          }
         }
       `}</style>
     </>
