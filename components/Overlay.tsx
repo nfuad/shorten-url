@@ -43,7 +43,7 @@ const Square = () => (
 
 const FullScreenSquare = ({ toggle, shortURL }) => (
   <Flipped flipId="square">
-    <div>
+    <div className="full-screen">
       <CloseButton toggle={toggle} />
 
       <a href={shortURL} target="_blank" rel="noopener noreferrer">
@@ -52,11 +52,10 @@ const FullScreenSquare = ({ toggle, shortURL }) => (
 
       <style jsx>
         {`
-          & {
+          .full-screen {
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
             position: fixed;
             top: 0;
             left: 0;
