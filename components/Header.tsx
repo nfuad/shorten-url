@@ -1,10 +1,10 @@
 import * as React from 'react'
 
-export default () => (
+export default ({ heading, text }) => (
   <header className="jumbo">
-    <h1>Shorten your long URL.</h1>
+    <h1>{heading}</h1>
     <span className="breaker" />
-    <p>It's free, fast, reliable and easy to use. Just drop your long URL:</p>
+    <p>{text}</p>
     <style jsx>
       {`
         .jumbo {
