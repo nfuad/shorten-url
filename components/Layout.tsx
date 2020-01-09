@@ -4,15 +4,15 @@ import Head from 'next/head'
 // custom imports
 import Nav from './Nav'
 
-export default props => (
+export default ({ title, children }) => (
   <>
     <Head>
       <title>
-        {props.title || 'Trim your URL short - A free tool to shorten URLs'}
+        {title || 'Trim your URL short - A free tool to shorten URLs'}
       </title>
     </Head>
     <Nav />
-    <main>{props.children}</main>
+    <main>{children}</main>
     <style jsx global>
       {`
         :root {
@@ -27,6 +27,11 @@ export default props => (
           --white: #fffffe;
           --dark: #33272a;
           --font-family: Candara, Arial, sans-serif;
+        }
+
+        ::selection {
+          background: var(--tertiary);
+          color: var(--white);
         }
 
         body {
