@@ -26,7 +26,7 @@ export default () => {
         const protocol = actualURL.startsWith('http') ? '' : '//'
 
         // redirect to the desired url
-        location.href = protocol + actualURL
+        router.push(protocol + actualURL)
       })
       .catch(_ => setError(true))
   })
