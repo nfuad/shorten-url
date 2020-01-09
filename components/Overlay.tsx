@@ -1,14 +1,39 @@
 import * as React from 'react'
 import { Flipper, Flipped } from 'react-flip-toolkit'
 
+const CloseButton = ({ toggle }) => (
+  <button onClick={toggle}>
+    Close
+    <style jsx>
+      {`
+        & {
+          background: transparent;
+          color: var(--white);
+          position: absolute;
+          z-index: 1;
+          top: 2rem;
+          right: 2rem;
+          border: none;
+          font-size: 1.33rem;
+          cursor: pointer;
+          transition: all 0.2s;
+        }
+
+        &:hover {
+          transform: scale(0.9);
+        }
+      `}
+    </style>
+  </button>
+)
+
 const Square = () => (
   <Flipped flipId="square">
-    <div className="square">
+    <div>
       <style jsx global>{`
-        .square {
+        & {
           width: 100%;
           height: 0rem;
-          cursor: pointer;
           background: var(--tertiary);
         }
       `}</style>
@@ -18,10 +43,8 @@ const Square = () => (
 
 const FullScreenSquare = ({ toggle, shortURL }) => (
   <Flipped flipId="square">
-    <div className="full-screen-square">
-      <button className="close" onClick={toggle}>
-        Close
-      </button>
+    <div>
+      <CloseButton toggle={toggle} />
       <h2>Share with all:</h2>
       <h3>
         <a href={shortURL} target="_blank" rel="noopener noreferrer">
@@ -30,7 +53,7 @@ const FullScreenSquare = ({ toggle, shortURL }) => (
       </h3>
 
       <style jsx global>{`
-        .full-screen-square {
+        & {
           display: flex;
           justify-content: center;
           align-items: center;
@@ -45,23 +68,6 @@ const FullScreenSquare = ({ toggle, shortURL }) => (
             var(--tertiary),
             var(--primary)
           );
-        }
-
-        .close {
-          background: transparent;
-          color: var(--white);
-          position: absolute;
-          z-index: 1;
-          top: 2rem;
-          right: 2rem;
-          border: none;
-          font-size: 3rem;
-          cursor: pointer;
-          transition: all 0.2s;
-        }
-
-        .close:hover {
-          transform: scale(0.9);
         }
 
         h2,
@@ -81,16 +87,14 @@ const FullScreenSquare = ({ toggle, shortURL }) => (
 
         @media only screen and (max-width: 1000px) {
           h2,
-          h3,
-          .close {
+          h3 {
             font-size: 2.5rem;
           }
         }
 
         @media only screen and (max-width: 500px) {
           h2,
-          h3,
-          .close {
+          h3 {
             font-size: 1.2rem;
           }
         }
