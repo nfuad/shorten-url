@@ -7,7 +7,7 @@ shortid.characters(
 
 const getAlias = () => {
   // only five characters will suffice
-  shortid.generate().substring(0, 5)
+  return shortid.generate().substring(0, 5)
 }
 
 export default getAlias
