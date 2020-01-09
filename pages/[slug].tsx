@@ -32,7 +32,7 @@ export default () => {
   })
 
   return (
-    <Layout>
+    <Layout title={error ? 'Page not found' : 'Redirecting...'}>
       {error ? (
         <Header
           heading=""

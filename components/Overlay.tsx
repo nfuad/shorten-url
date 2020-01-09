@@ -30,7 +30,7 @@ const CloseButton = ({ toggle }) => (
 const Square = () => (
   <Flipped flipId="square">
     <div>
-      <style jsx global>{`
+      <style jsx>{`
         & {
           width: 100%;
           height: 0rem;
@@ -45,60 +45,48 @@ const FullScreenSquare = ({ toggle, shortURL }) => (
   <Flipped flipId="square">
     <div>
       <CloseButton toggle={toggle} />
-      <h2>Share with all:</h2>
-      <h3>
-        <a href={shortURL} target="_blank" rel="noopener noreferrer">
-          {shortURL}
-        </a>
-      </h3>
 
-      <style jsx global>{`
-        & {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-direction: column;
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-image: linear-gradient(
-            45deg,
-            var(--tertiary),
-            var(--primary)
-          );
-        }
+      <a href={shortURL} target="_blank" rel="noopener noreferrer">
+        {shortURL}
+      </a>
 
-        h2,
-        h3 {
-          font-size: 6rem;
-          margin-top: 0;
-          color: var(--white);
-        }
-
-        h3 {
-          font-size: 7rem;
-        }
-
-        a {
-          color: var(--dark);
-        }
-
-        @media only screen and (max-width: 1000px) {
-          h2,
-          h3 {
-            font-size: 2.5rem;
+      <style jsx>
+        {`
+          & {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(
+              45deg,
+              var(--tertiary),
+              var(--primary)
+            );
           }
-        }
 
-        @media only screen and (max-width: 500px) {
-          h2,
-          h3 {
-            font-size: 1.2rem;
+          a {
+            color: var(--dark);
+            font-size: 6rem;
           }
-        }
-      `}</style>
+
+          @media only screen and (max-width: 1000px) {
+            a {
+              font-size: 2.5rem;
+            }
+          }
+
+          @media only screen and (max-width: 500px) {
+            a {
+              font-size: 1.2rem;
+            }
+          }
+        `}
+      </style>
     </div>
   </Flipped>
 )
