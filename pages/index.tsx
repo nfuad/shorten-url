@@ -1,5 +1,4 @@
 import * as React from 'react'
-
 import { FormContext, useForm } from 'react-hook-form'
 import { createLinkAlias } from '../graphql/api'
 
@@ -24,6 +23,7 @@ export default () => {
     createLinkAlias(data.inputURL, alias)
       .then(res => {
         if (res.errors) {
+          console.log(res)
           setErrorMessage('Please try a valid & unique URL')
           return
         }
