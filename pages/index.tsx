@@ -9,7 +9,7 @@ import Header from '../components/Header'
 import Form from '../components/Form'
 import Overlay from '../components/Overlay'
 import Error from '../components/Error'
-import getAlias from '../lib/getAlias'
+import getAlias from '../utils/getAlias'
 
 export default () => {
   const [fullScreen, setFullScreen] = React.useState(false)
