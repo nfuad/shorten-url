@@ -1,28 +1,14 @@
-import useFetch from '../lib/useFetch'
-
-const getData = data => {
-  if (!data || data.errors) return null
-  return data.data
-}
-
-const getErrorMessage = (error, data) => {
-  if (error) return error.message
-  if (data && data.errors) {
-    return data.errors[0].message
-  }
-  return null
-}
-
-export const findLinkByAlias = alias => {
-  const query = `query findLinkByAlias($alias: String) {
+export const findLinkByAlias = async alias => {
+  const query = `query findLinkByAlias($alias: String!) {
     findLinkByAlias(alias: $alias) {
       _id
       _ts
-      actualURL
       alias
+      actualURL
     }
   }`
-  const { data, error } = useFetch(process.env.FAUNADB_GRAPHQL_ENDPOINT, {
+
+  const res = await fetch(process.env.FAUNADB_GRAPHQL_ENDPOINT, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${process.env.FAUNADB_SECRET_KEY}`,
@@ -34,12 +20,9 @@ export const findLinkByAlias = alias => {
       variables: { alias },
     }),
   })
+  const data = await res.json()
 
-  return {
-    data: getData(data),
-    errorMessage: getErrorMessage(error, data),
-    error,
-  }
+  return data
 }
 
 export const createLinkAlias = async (actualURL, alias) => {
@@ -65,6 +48,33 @@ export const createLinkAlias = async (actualURL, alias) => {
     body: JSON.stringify({
       query,
       variables: { actualURL, alias },
+    }),
+  })
+  const data = await res.json()
+
+  return data
+}
+
+export const deleteLinkAlias = async id => {
+  const query = `mutation deleteLink($id: ID!) {
+    deleteLink(id: $id) {
+      _id
+      _ts
+      alias
+      actualURL
+    }
+  }`
+
+  const res = await fetch(process.env.FAUNADB_GRAPHQL_ENDPOINT, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${process.env.FAUNADB_SECRET_KEY}`,
+      'Content-type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify({
+      query,
+      variables: { id },
     }),
   })
   const data = await res.json()
