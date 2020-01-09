@@ -1,5 +1,5 @@
 import * as React from 'react'
-import shortid from 'shortid'
+
 import { FormContext, useForm } from 'react-hook-form'
 import { createLinkAlias } from '../graphql/api'
 
@@ -9,11 +9,7 @@ import Header from '../components/Header'
 import Form from '../components/Form'
 import Overlay from '../components/Overlay'
 import Error from '../components/Error'
-
-// use $ and @ instead of - and _
-shortid.characters(
-  '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@'
-)
+import getAlias from '../lib/getAlias'
 
 export default () => {
   const [fullScreen, setFullScreen] = React.useState(false)
@@ -23,7 +19,7 @@ export default () => {
   const methods = useForm()
   const onSubmit = data => {
     setErrorMessage(null)
-    const alias = shortid.generate().substring(0, 5)
+    const alias = getAlias()
 
     createLinkAlias(data.inputURL, alias)
       .then(res => {
