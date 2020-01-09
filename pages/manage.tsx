@@ -20,7 +20,8 @@ export default () => {
       const res = await findLinkByAlias(alias)
       if (!res.errors) {
         const deleteRes = await deleteLinkAlias(res.data.findLinkByAlias._id)
-        if (!deleteRes.errors) setErrorMessage('')
+        if (!deleteRes.errors) setErrorMessage('Successfully Deleted...')
+        return
       }
 
       setErrorMessage('The URL was not found in our Database')
