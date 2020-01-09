@@ -11,6 +11,11 @@ export default () => (
     />
     <ul>
       <li>
+        <Link href="/">
+          <a>Home</a>
+        </Link>
+      </li>
+      <li>
         <Link href="/manage">
           <a>Manage</a>
         </Link>
