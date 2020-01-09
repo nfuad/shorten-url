@@ -5,7 +5,7 @@ shortid.characters(
   '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@'
 )
 
-const getAlias = () => {
+const getAlias = (): String => {
   // only five characters will suffice
   return shortid.generate().substring(0, 5)
 }
